@@ -1,23 +1,25 @@
-import logo from './logo.svg';
+import React, { useState } from 'react';
 import './App.css';
+import Dropdown from './components/Dropdown';
 
 function App() {
+  const [selectedOption, setSelectedOption] = useState('Select');
+  const options = ['Yes', 'Probably Not'];
+
+  const handleSelect = (option) => {
+    setSelectedOption(option);
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="flex flex-col justify-center items-center h-screen text-2xl bg-[#7bd7e2] font-semibold">
+      <h1>Should you use a dropdown?</h1>
+      <div className='pt-2'>
+        <Dropdown 
+          items={options}
+          selected={selectedOption}
+          onSelect={handleSelect}
+        />
+      </div>
     </div>
   );
 }
